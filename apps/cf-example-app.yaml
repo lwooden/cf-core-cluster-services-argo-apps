@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cf-ingress-haproxy
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: cf-ingress-haproxy
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/lwooden/cf-core-cluster-services.git
+    targetRevision: main
+    path: cf-ingress-haproxy
+    helm:
+      releaseName: cf-ingress-haproxy
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: haproxy
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
