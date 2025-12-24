@@ -9,8 +9,13 @@ metadata:
     app.kubernetes.io/name: cf-core-cluster-services
 spec:
   project: default
-
   source:
     repoURL: https://github.com/lwooden/cf-core-cluster-services-argo-apps.git
     targetRevision: main # or HEAD, branch name, tag, or commit SHA
     path: apps # path to the Helm chart or Kustomize overlay
+
+
+    # syncPolicy: # adding these for future use -- automated sync policy on bootstrap
+    #   automated:
+    #     prune: true
+    #     selfHeal: true
