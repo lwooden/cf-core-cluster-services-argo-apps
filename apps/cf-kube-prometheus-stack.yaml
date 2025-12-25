@@ -14,8 +14,8 @@ spec:
     repoURL: https://github.com/lwooden/cf-core-cluster-services.git
     targetRevision: main
     path: cf-kube-prometheus-stack
-  #   helm:
-  #     releaseName: cf-ingress-haproxy
+    helm:
+      releaseName: kube-prometheus-stack
 
   destination:
     server: https://kubernetes.default.svc
