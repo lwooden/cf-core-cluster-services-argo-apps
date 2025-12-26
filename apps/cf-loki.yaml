@@ -14,8 +14,8 @@ spec:
     repoURL: https://github.com/lwooden/cf-core-cluster-services.git
     targetRevision: main
     path: cf-loki
-  #   helm:
-  #     releaseName: cf-ingress-haproxy
+    helm:
+      releaseName: loki
 
   destination:
     server: https://kubernetes.default.svc
